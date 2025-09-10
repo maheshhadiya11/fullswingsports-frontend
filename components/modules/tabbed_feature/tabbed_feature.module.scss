@@ -1,0 +1,291 @@
+@import 'styles/variables';
+
+.headlineContainer {
+  @apply headline-h4;
+}
+
+.vertical {
+  .topRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.4rem;
+
+    @screen md {
+      margin-bottom: 3.2rem;
+    }
+
+    @apply col-start-1 col-span-4;
+    @apply md:col-start-1 md:col-span-8;
+    @apply xl:col-start-2 xl:col-span-10;
+    @apply xxl:col-start-1 xxl:col-span-12;
+
+    .ctaContainer {
+      display: none;
+
+      @screen xl {
+        display: unset;
+      }
+    }
+  }
+
+  .headlineContainer {
+    @screen xl {
+      max-width: 58.2rem;
+    }
+  }
+
+  .content {
+    @apply col-start-1 col-span-4;
+    @apply md:col-start-1 md:col-span-8;
+    @apply xl:col-start-2 xl:col-span-10;
+    @apply xxl:col-start-1 xxl:col-span-12;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2.4rem;
+
+    @screen xl {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2.4rem;
+    }
+
+    @screen xxl {
+      @apply grid-cols-12;
+      column-gap: 3rem;
+    }
+  }
+
+  .tab {
+    cursor: pointer;
+    @apply border-y border-fsGrey-400 transition-colors;
+    padding: 1.9rem 0;
+
+    @screen md {
+      padding: 2rem 0;
+    }
+
+    .accordion {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: 0.5s all ease;
+    }
+
+    &.open {
+      border-color: currentColor;
+
+      .accordion {
+        grid-template-rows: 1fr;
+      }
+
+      .headline {
+        font-weight: 500;
+        color: currentColor;
+
+        .dot {
+          opacity: 1;
+        }
+
+        span {
+          transform: translateX(1.2rem);
+        }
+      }
+    }
+
+    &:hover {
+      .headline {
+        color: currentColor;
+      }
+    }
+
+    .accordionContent {
+      min-height: 0px;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .headline {
+      position: relative;
+      @apply body-copy-2 transition-colors;
+      color: theme('colors.fsGrey.500');
+      margin-left: 1.6rem;
+      margin-right: 1.6rem;
+
+      span {
+        display: block;
+        @apply transition-transform duration-500;
+      }
+
+      .dot {
+        transition: 0.5s all ease;
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: theme('colors.fsBlue.600');
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    .copy {
+      @apply body-copy-2;
+      padding-top: 0.8rem;
+      padding-left: 1.6rem;
+      padding-right: 1.6rem;
+    }
+
+    .cta {
+      margin-top: 2rem;
+
+      @screen md {
+        margin-top: 1.6rem;
+        margin-left: 1.6rem;
+      }
+
+      @screen xl {
+        margin-top: 2.4rem;
+      }
+
+      a {
+        width: 100%;
+
+        @screen md {
+          width: auto;
+        }
+      }
+    }
+  }
+
+  .mobileTabImageContainer {
+    .mobileImage {
+      aspect-ratio: 16/9;
+      border-radius: 0.8rem;
+    }
+    @screen xl {
+      display: none;
+    }
+  }
+
+  .tabsContainer {
+    @screen xxl {
+      @apply col-span-5;
+    }
+  }
+
+  .tabImageContainer {
+    grid-row: 1;
+
+    @screen xl {
+      grid-row: unset;
+    }
+
+    @screen xxl {
+      @apply col-span-7;
+    }
+
+    &.hideInMobile {
+      display: none;
+
+      @screen xl {
+        display: block;
+      }
+    }
+
+    .image {
+      height: auto;
+      aspect-ratio: 16/9;
+      border-radius: 0.68rem;
+
+      @screen md {
+        border-radius: 0.8rem;
+      }
+
+      @screen xl {
+        border-radius: 1.2rem;
+      }
+    }
+  }
+
+  .mobileCtaContainer {
+    @apply col-start-1 col-span-4;
+    @apply md:col-start-1 md:col-span-8;
+
+    margin-top: 3.2rem;
+
+    a {
+      width: 100%;
+    }
+
+    @screen xl {
+      display: none;
+    }
+  }
+}
+
+.horizontal {
+  .topRow,
+  .tabsContentSection {
+    @apply col-start-1 col-span-4;
+    @apply md:col-start-1 md:col-span-8;
+    @apply xl:col-start-2 xl:col-span-10;
+    @apply xxl:col-start-1 xxl:col-span-12;
+  }
+
+  .mobilePrimaryBtnContainer {
+    margin-top: 2.4rem;
+
+    @screen md {
+      display: none;
+    }
+  }
+
+  .tabContent {
+    margin-top: 2.4rem;
+    @screen md {
+      margin-top: 3.2rem;
+    }
+  }
+
+  .tabHeadline {
+    @apply headline-h6;
+  }
+
+  .tabCopy {
+    padding-top: 0.8rem;
+    @apply body-copy-1;
+  }
+
+  .tabCTA {
+    margin-top: 2.4rem;
+  }
+
+  .headlineContainer {
+    @apply col-span-full;
+    @apply xxl:col-start-1 xxl:col-span-6;
+  }
+
+  .mainImageContainer {
+    margin-top: 2.4rem;
+
+    @screen md {
+      margin-top: 3.2rem;
+    }
+
+    .image {
+      border-radius: 0.8rem;
+      aspect-ratio: 16/9; // 1.77...
+
+      @screen md {
+        border-radius: 1.2rem;
+      }
+
+      @screen xl {
+        border-radius: 2.4rem;
+      }
+    }
+  }
+}

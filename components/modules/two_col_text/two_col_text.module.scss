@@ -1,0 +1,26 @@
+@import 'styles/variables';
+
+.root {
+  // add your styles here
+
+  .leftCol {
+    @apply col-span-full headline-h5;
+    margin-bottom: 3rem;
+    @screen md {
+      @apply col-span-3 col-start-2;
+      margin-bottom: 0;
+    }
+    @screen xl {
+      @apply col-span-5 col-start-2;
+    }
+  }
+  .rightCol {
+    @apply col-span-full body-copy-2;
+    @screen md {
+      @apply col-span-3;
+    }
+    @screen xl {
+      @apply col-span-5;
+    }
+  }
+}

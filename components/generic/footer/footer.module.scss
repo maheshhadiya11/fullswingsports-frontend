@@ -1,0 +1,426 @@
+@import '../../../styles/variables';
+
+.root {
+  @apply text-fsGrey-50;
+  padding-top: 12rem;
+
+  :global(.athlete) & {
+    padding-top: 9rem;
+
+    @screen xl {
+      padding-top: 6.4rem;
+    }
+  }
+
+  :global(.not-found) & {
+    padding-top: 0;
+
+    @screen md {
+      .content {
+        border-radius: 0 0 2.4rem 2.4rem;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.content {
+  @apply bg-fsGrey-950;
+
+  @screen md {
+    border-radius: 2.4rem;
+    margin: 2.7rem 2.7rem 0;
+  }
+
+  @screen xxl {
+    margin: 9rem 5rem 0;
+  }
+}
+
+.contentGrid.contentGrid {
+  display: grid;
+  @screen md {
+    padding: 0;
+  }
+  @screen xl {
+    max-width: 122.4rem;
+  }
+  @screen xxl {
+    max-width: 135rem;
+    padding: 0 3rem;
+  }
+}
+
+.promoRow,
+.quoteRow,
+.menuRow,
+.logoRow,
+.legalRow {
+  @screen md {
+    @apply col-span-6 col-start-2;
+  }
+
+  @screen xl {
+    @apply col-span-10 col-start-2;
+  }
+
+  @screen xxl {
+    @apply col-span-full;
+  }
+}
+
+.promoRow {
+  margin-left: 2.4rem;
+  margin-right: 2.4rem;
+
+  @screen md {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @screen xxl {
+    margin-left: -9rem;
+    margin-right: -9rem;
+  }
+}
+
+.quoteRow,
+.menuRow,
+.logoRow {
+  @apply border-b border-fsGrey-50 border-opacity-30;
+  padding-bottom: 6.2rem;
+
+  @screen xxl {
+    padding-bottom: 7.2rem;
+  }
+}
+
+.quoteRow {
+  padding-left: 2.4rem;
+  margin-top: 4.8rem;
+
+  .promoRow + & {
+    margin-top: 1.8rem;
+  }
+
+  @screen md {
+    padding-left: 0;
+    margin-top: 11rem;
+
+    .promoRow + & {
+      margin-top: 1.8rem;
+    }
+  }
+
+  @screen xl {
+    margin-top: 20rem;
+
+    .promoRow + & {
+      margin-top: 1.8rem;
+    }
+  }
+}
+
+.menuRow {
+  padding: 4rem 0 6rem;
+
+  @screen md {
+    padding: 3.2rem 0;
+    display: flex;
+  }
+
+  @screen xxl {
+    @apply default-grid;
+    padding-top: 7.2rem;
+  }
+}
+
+.footerLogoCol {
+  @apply col-span-4 hidden md:block;
+
+  @screen md {
+    flex-grow: 1;
+  }
+}
+
+.footerLogo {
+  max-width: 8rem;
+
+  @screen xl {
+    max-width: 18.3rem;
+  }
+  @screen xxl {
+    max-width: 19rem;
+  }
+}
+
+.menuLinks {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0 1.4rem;
+
+  @screen md {
+    flex-grow: 3;
+    padding: 0;
+    flex-flow: row;
+  }
+
+  @screen xxl {
+    @apply col-span-8;
+    gap: 3rem;
+  }
+}
+
+.menuLink {
+  flex: 50%;
+  padding: 0 1rem;
+
+  @screen md {
+    flex: 1 1 auto;
+    padding: 0;
+  }
+  @screen xxl {
+    max-width: 19rem;
+  }
+}
+
+.menuLinkTitle {
+  @apply card-title;
+  display: block;
+  margin-bottom: 2.4rem;
+
+  @screen xl {
+    margin-bottom: 3.4rem;
+  }
+  @screen xxl {
+    margin-bottom: 5.9rem;
+  }
+}
+
+.subLink {
+  margin: 1.4em 0;
+
+  @media (hover: hover) {
+    @apply transition-opacity;
+    opacity: 1;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+.logoRow {
+  padding: 2.8rem 2.4rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @screen md {
+    gap: 2.4rem;
+    flex-wrap: nowrap;
+    padding: 2.4rem 0;
+  }
+
+  @screen xxl {
+    padding: 4rem 0;
+  }
+
+  img {
+  }
+}
+.logoContainer {
+  flex: 0 1 50%;
+  min-width: 50%;
+  display: flex;
+
+  @screen md {
+    min-width: 0;
+    flex: 0 1 auto;
+    order: -1;
+    max-width: 30rem;
+  }
+}
+.logoCopy {
+  @apply button-label text-fsGrey-400;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  margin-left: 1.5rem;
+  max-width: 14.2rem;
+  @screen md {
+    margin-left: 0.8rem;
+  }
+  @screen xxl {
+    margin-left: 1.5rem;
+  }
+}
+
+.legalRow {
+  @apply body-legal text-fsGrey-400;
+  padding: 4rem 2.4rem 6rem;
+
+  @screen md {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.6rem 0 4rem;
+  }
+
+  @screen xxl {
+    padding: 4rem 0;
+  }
+}
+
+.legalLink {
+  display: inline-block;
+  vertical-align: top;
+
+  + .legalLink {
+    &::before {
+      content: ' | ';
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 0.5em;
+    }
+  }
+}
+
+.accessibilityAdjustmentsButtonWrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  order: -1;
+  width: 100%;
+  padding-bottom: 2.8rem;
+  margin-bottom: 2.8rem;
+  position: relative;
+
+  &:after {
+    @apply bg-fsGrey-50 opacity-30;
+    content: '';
+    display: block;
+    position: absolute;
+    width: calc(100% + 4.8rem);
+    height: 1px;
+    bottom: 0;
+    left: -2.4rem;
+  }
+
+  @screen md {
+    @apply border-none;
+    margin-left: auto;
+    width: auto;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    &:after {
+      content: none;
+    }
+  }
+}
+
+.accessibilityAdjustmentsButton {
+  display: flex;
+  align-items: center;
+  gap: 0 0.8rem;
+}
+
+.accessibilityAdjustmentsIconWrapper {
+  @apply bg-fsBlue-600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 100%;
+  width: 4rem;
+  height: 4rem;
+
+  @screen md {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  @screen xl {
+    height: 4rem;
+    width: 4rem;
+  }
+}
+
+.accessibilityAdjustmentsIcon {
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+
+  @screen md {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  @screen xl {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}
+
+.socialsColumn {
+  @screen md {
+    display: none;
+  }
+  @screen xl {
+    flex-grow: 0;
+    display: block;
+  }
+}
+.socialsSubItem {
+  display: none;
+  @screen md {
+    margin-top: 4rem;
+    display: block;
+  }
+  @screen xl {
+    display: none;
+  }
+}
+.socialLinks {
+  display: flex;
+  gap: 2.4rem;
+
+  .subLink {
+    margin: 0;
+  }
+
+  @screen md {
+    gap: 0.5rem;
+  }
+
+  @screen xl {
+    .subLink {
+      margin: 0.8rem 0;
+    }
+  }
+
+  @screen xxl {
+    gap: 1.2rem;
+
+    .subLink {
+      margin: 1.2rem 0;
+    }
+  }
+  @media (hover: hover) {
+    .subLink {
+      opacity: 1;
+    }
+  }
+}
+
+.socialIcon {
+  height: 3.2rem;
+  width: auto;
+
+  @screen md {
+    height: 2rem;
+  }
+
+  @screen xxl {
+    height: 2.4rem;
+  }
+}

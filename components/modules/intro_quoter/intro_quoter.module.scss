@@ -1,0 +1,107 @@
+@import '../../../styles/variables';
+
+.root {
+  .quoteHighlight {
+    @apply text-fsGrey-400;
+
+    @screen xl {
+      .icon {
+        left: -3.2rem;
+      }
+    }
+
+    @screen xxl {
+      .icon {
+        left: -3.6rem;
+      }
+    }
+  }
+
+  .quoteStatic {
+    @screen xl {
+      &,
+      ~ .subline {
+        padding-left: 3.2rem;
+      }
+    }
+
+    @screen xxl {
+      &,
+      ~ .subline {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .quote,
+  .subline {
+    @apply col-span-full;
+    @screen md {
+      @apply col-start-2 col-span-6;
+    }
+
+    @screen xl {
+      @apply col-start-3 col-span-8;
+    }
+
+    @screen xxl {
+      @apply col-start-2 col-span-10;
+    }
+  }
+
+  .quote {
+    @apply headline-h5;
+    position: relative;
+
+    @screen md {
+      @apply headline-h2;
+    }
+  }
+
+  .subline {
+    @apply body-copy-1;
+    margin-top: 3.6rem;
+
+    @screen md {
+      margin-top: 1rem;
+    }
+
+    @screen xl {
+      @apply col-start-3 col-span-5;
+      margin-top: 1.6rem;
+    }
+
+    @screen xxl {
+      @apply col-start-2 col-span-5;
+      margin-top: 2.4rem;
+    }
+  }
+
+  .icon {
+    height: 0.5em;
+    font-size: 1.4em;
+    margin-bottom: 0.8rem;
+
+    @screen md {
+      position: absolute;
+      margin-bottom: 0;
+      font-size: 1.2em;
+      left: -2.2rem;
+    }
+
+    @screen xl {
+      left: 0rem;
+    }
+
+    @screen xxl {
+      left: -3.6rem;
+    }
+  }
+
+  &.full {
+    display: flex;
+    min-height: 90vh;
+    align-items: center;
+    @apply py-48;
+  }
+}

@@ -1,0 +1,515 @@
+@import 'styles/variables';
+
+.root {
+  --gap: 2.4rem;
+
+  @screen md {
+    --gap: 2rem;
+  }
+
+  @screen xl {
+    --gap: 2.4rem;
+  }
+
+  @screen xxl {
+    --gap: 3rem;
+  }
+}
+
+.headlineRow {
+  @apply col-span-full mb-32;
+
+  @screen md {
+    @apply col-span-6 col-start-2 flex justify-between items-end;
+  }
+
+  @screen xl {
+    @apply col-span-8 col-start-3;
+  }
+
+  @screen xxl {
+    @apply col-span-full;
+  }
+}
+
+.headlineCopy {
+  @apply mb-16 md:mb-0;
+  flex-basis: 66%;
+
+  @screen xl {
+    flex-basis: 60%;
+  }
+}
+
+.topHeadline {
+  @apply mb-16;
+  @apply xxl:mb-8;
+}
+
+.boxGrid {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+  @apply col-span-full;
+  position: relative;
+
+  @screen md {
+    flex-flow: row wrap;
+  }
+
+  @screen xl {
+    @apply col-span-10 col-start-2;
+  }
+
+  @screen xxl {
+    @apply col-span-full;
+    margin: 0 -9rem;
+  }
+
+  &.boxCols {
+    @screen md {
+      flex-flow: row;
+    }
+  }
+
+  &.boxRaw {
+    .boxRoot {
+      flex-grow: 1;
+      flex-basis: calc(50% - var(--gap) / 2);
+    }
+  }
+}
+
+.boxColumn {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+  flex-basis: calc(50% - var(--gap) / 2);
+}
+
+.boxRoot {
+  @apply bg-fsBlue-900 text-fsGrey-50 col-span-full;
+  aspect-ratio: 398 / 265;
+  border-radius: 0.8rem;
+  position: relative;
+  overflow: hidden;
+
+  @screen md {
+    aspect-ratio: 1 / 1;
+    border-radius: 1.2rem;
+  }
+
+  @media (hover: hover) {
+    &.hover {
+      &:hover {
+        .gradient {
+          opacity: 1;
+        }
+        a {
+          @apply bg-fsBlue-950 text-fsBlue-200 border-fsBlue-950;
+        }
+        h3 {
+          @apply underline;
+        }
+        .modalButton {
+          @apply bg-fsBlue-950 text-fsBlue-200;
+        }
+      }
+    }
+  }
+  .hasLink::before,
+  .hasModalOnly::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  .buttonContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  .headline,
+  .copy {
+    max-width: 80%;
+  }
+  .headline {
+    @apply card-title mt-24;
+  }
+  .copy {
+    @apply body-copy-2 mt-8;
+  }
+}
+
+.bg,
+.gradient,
+.fg {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.bg {
+  height: 100%;
+  z-index: 0;
+}
+
+.gradient {
+  @apply transition-opacity;
+  height: 100%;
+  z-index: 1;
+  border-radius: 8px;
+  background: radial-gradient(100% 50% at 0% 100%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%) 50% / cover no-repeat;
+  opacity: 0.2;
+
+  .noGradient & {
+    opacity: 0;
+  }
+}
+
+.fg {
+  @apply p-24;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 2;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.modalCta {
+  margin-right: var(--gap);
+  margin-bottom: var(--gap);
+  z-index: 3;
+}
+
+.one-01 {
+  .boxRoot {
+    aspect-ratio: 2 / 1;
+  }
+}
+
+.three-01 {
+  .boxRoot {
+    @screen md {
+      &.box-1,
+      &.box-2 {
+        height: 50%;
+        aspect-ratio: unset;
+      }
+    }
+
+    @screen xl {
+      &.box-1 {
+        height: 50%;
+        aspect-ratio: 1/1;
+        align-self: flex-start;
+      }
+
+      &.box-2 {
+        aspect-ratio: 2/1;
+      }
+    }
+  }
+}
+
+.three-02 {
+  .boxRoot {
+    @screen md {
+      &.box-1,
+      &.box-2 {
+        height: 50%;
+        aspect-ratio: unset;
+      }
+    }
+
+    @screen xl {
+      &.box-1 {
+        aspect-ratio: 2/1;
+      }
+      &.box-2 {
+        aspect-ratio: 1;
+        align-self: flex-start;
+        flex-basis: 50%;
+      }
+    }
+  }
+}
+
+.three-03 {
+  .boxRoot {
+    @screen md {
+      &.box-0,
+      &.box-1 {
+        height: 50%;
+        aspect-ratio: unset;
+      }
+    }
+
+    @screen xl {
+      &.box-0 {
+        aspect-ratio: 1;
+        align-self: end;
+        flex-basis: 50%;
+        min-height: 0;
+      }
+      &.box-1 {
+        height: 50%;
+        aspect-ratio: 2/1;
+      }
+    }
+  }
+}
+
+.three-04 {
+  .boxRoot {
+    @screen md {
+      &.box-0,
+      &.box-1 {
+        height: 50%;
+        aspect-ratio: unset;
+      }
+    }
+
+    @screen xl {
+      &.box-0 {
+        aspect-ratio: 2/1;
+      }
+      &.box-1 {
+        height: 50%;
+        aspect-ratio: 1;
+        align-self: end;
+        flex-basis: 50%;
+      }
+    }
+  }
+}
+
+.three-05 {
+  .boxRoot {
+    @screen md {
+      &.box-0,
+      &.box-1 {
+        height: 50%;
+        aspect-ratio: unset;
+      }
+    }
+  }
+}
+
+.three-06 {
+  .boxRoot {
+    @screen md {
+      &.box-1,
+      &.box-2 {
+        height: 50%;
+        aspect-ratio: unset;
+      }
+    }
+  }
+}
+
+.three-07 {
+  .boxRoot {
+    @screen md {
+      &.box-0 {
+        width: 100%;
+        aspect-ratio: 2 / 1;
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+.three-08 {
+  .boxRoot {
+    @screen md {
+      &:last-child {
+        aspect-ratio: 2 / 1;
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+.four-01 {
+  .boxRoot {
+    @screen md {
+      &.box-0,
+      &.box-3 {
+        aspect-ratio: 2/1;
+      }
+    }
+
+    @screen xl {
+      &.box-0 {
+        align-self: end;
+      }
+
+      &.box-0,
+      &.box-3 {
+        flex-shrink: 0;
+        aspect-ratio: 2 / 1;
+        aspect-ratio: 1;
+        width: 50%;
+      }
+    }
+  }
+}
+
+.four-02 {
+  .boxRoot {
+    @screen md {
+      &.box-0,
+      &.box-3 {
+        aspect-ratio: 2/1;
+      }
+    }
+
+    @screen xl {
+      &.box-0,
+      &.box-3 {
+        flex-shrink: 0;
+        aspect-ratio: 2 / 1;
+      }
+      &.box-3 {
+        aspect-ratio: 1;
+        width: 50%;
+      }
+    }
+  }
+}
+
+.four-03 {
+  .boxRoot {
+    @screen md {
+      &.box-0,
+      &.box-3 {
+        aspect-ratio: 2/1;
+      }
+    }
+
+    @screen xl {
+      &.box-0 {
+        aspect-ratio: 2/1;
+        align-self: end;
+        aspect-ratio: 1;
+        width: 50%;
+      }
+
+      &.box-3 {
+        flex-shrink: 0;
+        aspect-ratio: 2 / 1;
+      }
+    }
+  }
+}
+
+.four-04 {
+  .boxRoot {
+    @screen md {
+      &.box-0,
+      &.box-3 {
+        aspect-ratio: 2/1;
+      }
+    }
+  }
+}
+
+.four-05 {
+  .boxRoot {
+    @screen md {
+      &.box-1,
+      &.box-2 {
+        aspect-ratio: 2/1;
+      }
+    }
+
+    @screen xl {
+      &.box-1 {
+        align-self: end;
+      }
+      &.box-1,
+      &.box-2 {
+        flex-shrink: 0;
+        aspect-ratio: 2 / 1;
+        aspect-ratio: 1;
+        width: 50%;
+      }
+    }
+  }
+}
+
+.four-06 {
+  .boxRoot {
+    @screen md {
+      &.box-1,
+      &.box-2 {
+        aspect-ratio: 2/1;
+      }
+    }
+
+    @screen xl {
+      &.box-1 {
+        align-self: end;
+        aspect-ratio: 1;
+        width: 50%;
+      }
+
+      &.box-2 {
+        flex-shrink: 0;
+        aspect-ratio: 2 / 1;
+      }
+    }
+  }
+}
+
+.four-07 {
+  .boxRoot {
+    @screen md {
+      &.box-1,
+      &.box-2 {
+        aspect-ratio: 2/1;
+      }
+    }
+
+    @screen xl {
+      &.box-1 {
+        aspect-ratio: 2 / 1;
+      }
+
+      &.box-2 {
+        align-self: start;
+        flex-basis: 50%;
+        aspect-ratio: 1;
+      }
+
+      &.box-3 {
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+.four-08 {
+  .boxRoot {
+    @screen md {
+      &.box-1,
+      &.box-2 {
+        aspect-ratio: 2 / 1;
+      }
+    }
+  }
+}

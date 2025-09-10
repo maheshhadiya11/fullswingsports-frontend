@@ -1,0 +1,52 @@
+@import '../../../styles/variables';
+
+.root {
+  @apply grid grid-cols-6;
+  gap: 3.4rem 3rem;
+
+  .countryInput {
+    @apply col-span-full;
+    @screen xl {
+      @apply col-span-4;
+    }
+  }
+  .townInput {
+    @apply col-span-full;
+    @screen xl {
+      @apply col-span-5;
+    }
+  }
+  .label {
+    @apply caption-label;
+    margin-bottom: 0.8rem;
+  }
+
+  .textarea {
+    @apply col-span-full;
+    min-height: 31rem;
+
+    @screen xl {
+      min-height: 26.2rem;
+    }
+  }
+
+  .shortInput,
+  .shortDropdown {
+    @apply col-span-full;
+    @screen xl {
+      @apply col-span-3;
+    }
+  }
+  .countryInput,
+  .shortDropdown {
+    div {
+      @apply bg-fsGrey-50;
+    }
+  }
+  .buttonContainer {
+    @apply col-span-full;
+    @screen xl {
+      @apply col-span-2;
+    }
+  }
+}

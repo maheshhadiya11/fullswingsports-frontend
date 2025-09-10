@@ -1,0 +1,59 @@
+.root {
+  @apply col-start-1 col-span-4;
+  @apply md:col-start-1 md:col-span-8;
+  @apply xl:col-start-2 xl:col-span-10;
+  @apply xxl:col-start-1 xxl:col-span-12;
+
+  .tabsContainer {
+    margin-top: 2.4rem;
+    border-bottom: 1px solid theme('colors.fsGrey.400');
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: max-content;
+
+    @screen md {
+      margin-top: 3.2rem;
+    }
+  }
+
+  .tabButton {
+    @apply body-copy-2;
+    border-bottom: 2px solid transparent;
+    transition: 0.5s border ease;
+    text-align: left;
+    white-space: nowrap;
+    padding: 1.14rem 3.65rem 1.14rem 0;
+
+    @screen md {
+      padding: 1.7rem 4.92rem 1.7rem 0;
+    }
+    @screen xl {
+      padding: 2rem 6.4rem 2rem 0;
+    }
+    @screen xxl {
+      padding: 2rem 4rem 2rem 0;
+    }
+
+    &:hover {
+      border-bottom: 2px solid theme('colors.fsGrey.400');
+    }
+
+    &.selected {
+      font-weight: 500;
+      border-bottom: 2px solid currentColor;
+    }
+  }
+
+  .primaryBtnContainer {
+    flex-grow: 1;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    padding-left: 2.4rem;
+    display: none;
+
+    @screen md {
+      display: flex;
+    }
+  }
+}

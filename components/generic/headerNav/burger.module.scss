@@ -1,0 +1,20 @@
+.burger {
+  &.closed {
+    :global(.hamburger-react > div:first-child) {
+      div {
+        width: 20px !important;
+      }
+    }
+    :global(.hamburger-react > div:nth-child(2)) {
+      div {
+        width: 14px !important;
+      }
+    }
+
+    :global(.hamburger-react > div:nth-child(3)) {
+      div {
+        width: 7px !important;
+      }
+    }
+  }
+}

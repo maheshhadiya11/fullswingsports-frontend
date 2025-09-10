@@ -1,0 +1,268 @@
+@import 'styles/variables';
+
+.root {
+  .subGrid {
+    @apply col-span-full default-grid md:grid-cols-12 xl:col-start-2 xl:col-span-10 xxl:col-span-full;
+    &.blogLanding {
+      @apply md:col-span-full;
+    }
+  }
+
+  :global(.background-wrap.overlap-top) & {
+    &:first-of-type {
+      .headline {
+        @apply text-fsGrey-950;
+      }
+    }
+  }
+}
+
+.headlineContainer {
+  padding-bottom: 3.2rem;
+}
+
+.headline {
+  @apply headline-h4 col-span-full;
+
+  @screen md {
+    @apply col-span-3;
+  }
+  @screen xl {
+    @apply col-span-4 col-start-2;
+  }
+  @screen xxl {
+    @apply col-span-5;
+  }
+}
+
+.tabs {
+  margin-bottom: 5.6rem;
+}
+
+.two-up-container,
+.three-up-container,
+.four-up-container {
+  @apply container;
+  @screen xxl {
+    max-width: 181rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.maxContainer {
+  @screen xxl {
+    padding: 0 5rem;
+    max-width: none;
+  }
+}
+
+.gridItem {
+  position: relative;
+  margin-bottom: 4rem;
+  display: flex;
+
+  @screen xl {
+    margin-bottom: 5.6rem;
+  }
+
+  @screen xxl {
+    margin-bottom: 6.4rem;
+  }
+
+  .gridItemHeadline {
+    @apply headline-h6;
+  }
+
+  .mediaContainer {
+    aspect-ratio: 16/9;
+
+    @screen xxl {
+      aspect-ratio: 5/3;
+    }
+  }
+
+  &.two-up {
+    flex-direction: column;
+    @apply col-span-4;
+    @screen md {
+      @apply col-span-6;
+    }
+    .mediaContainer {
+      margin-bottom: 2.4rem;
+    }
+
+    .gridItemHeadline {
+      :global(.blog-landing) & {
+        @apply headline-h5;
+      }
+    }
+  }
+
+  &.three-up {
+    @apply col-span-4;
+    @screen xl {
+      @apply col-span-4;
+    }
+  }
+  &.four-up {
+    @apply col-span-4;
+    @screen xxl {
+      @apply col-span-3;
+    }
+  }
+
+  &.three-up,
+  &.four-up {
+    @screen md {
+      flex-direction: column;
+    }
+    .icon {
+      margin-right: 1.8rem;
+      width: 6.8rem;
+      height: 6.8rem;
+      aspect-ratio: 1;
+      @screen md {
+        margin-right: 0;
+      }
+    }
+    .mediaContainer {
+      margin-right: 2rem;
+      margin-bottom: 1rem;
+      max-width: 10.6rem;
+      aspect-ratio: 1;
+      flex-shrink: 0;
+      max-height: 10.6rem;
+      @screen md {
+        max-width: none;
+        max-height: none;
+        aspect-ratio: 5/3;
+        margin-right: 0;
+        margin-bottom: 1.6rem;
+      }
+    }
+
+    .gridItemHeadline {
+      :global(.blog-landing) & {
+        @screen md {
+          @apply headline-h5;
+        }
+
+        @screen xl {
+          @apply headline-h6;
+        }
+      }
+    }
+  }
+
+  &.three-up,
+  &.four-up {
+    &.cardOnMobile {
+      flex-direction: column;
+      .mediaContainer {
+        aspect-ratio: 5/3;
+        max-height: none;
+        max-width: none;
+      }
+    }
+
+    &:not(.cardonMobile) {
+      .gridItemCta {
+        :global(.blog-landing) & {
+          opacity: 0;
+          height: 0;
+
+          @screen md {
+            opacity: 1;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .icon {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    margin-bottom: 1.8rem;
+    width: 6.8rem;
+  }
+
+  .mediaContainer {
+    @apply bg-fsGrey-50;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.8rem;
+  }
+
+  .gridItemContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gridItemHeadline {
+    margin-bottom: 0.8rem;
+  }
+  .gridItemCopy {
+    @apply body-copy-2;
+    margin-bottom: 1.4rem;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    @screen md {
+      margin-bottom: 2.4rem;
+    }
+  }
+  .gridItemCta {
+    width: auto;
+    // @screen xl {
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    // }
+  }
+}
+
+.accordionCta {
+  @apply col-span-full;
+  max-width: none;
+  margin-top: 3.2rem;
+}
+
+.accordionButton {
+  @apply body-copy-1;
+  padding: 2rem 0rem;
+  &.active {
+    @apply font-medium;
+  }
+}
+.accordionContent {
+  @screen md {
+    > div {
+      @apply flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .gridItem {
+        max-width: calc(33.3333% - 4rem);
+      }
+    }
+  }
+}
+
+.accordionItem {
+  @apply border-y text-fsGrey-400 border-fsGrey-400;
+  margin-bottom: -0.1rem;
+  position: relative;
+
+  &.active {
+    color: currentColor;
+    border-color: currentColor;
+    z-index: 1;
+  }
+}

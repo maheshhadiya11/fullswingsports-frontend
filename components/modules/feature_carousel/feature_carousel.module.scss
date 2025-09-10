@@ -1,0 +1,19 @@
+@import 'styles/variables';
+
+.root {
+  .feature {
+    @apply col-span-full xl:col-span-10 xl:col-start-2 xxl:col-span-full;
+
+    @screen xxl {
+      margin-left: -9rem;
+      margin-right: -9rem;
+    }
+  }
+
+  .pagination {
+    @apply mt-16 md:mt-32 xl:mt-24 xxl:mt-32;
+    @apply col-span-full;
+    display: flex;
+    justify-content: center;
+  }
+}

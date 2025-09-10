@@ -1,0 +1,147 @@
+@import 'styles/variables';
+
+.root {
+  @apply button-label transition-colors;
+  line-height: 2.4rem;
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.8rem;
+  display: block;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+
+  @screen md {
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+  }
+
+  @screen xl {
+    border-radius: 0.8rem;
+    padding: 2.2rem;
+  }
+
+  svg {
+    display: inline-block;
+    vertical-align: top;
+
+    &:first-child {
+      margin-right: 1rem;
+    }
+
+    &:last-child {
+      margin-left: 1rem;
+    }
+  }
+
+  &[type='button'],
+  & {
+    @apply bg-fsBlue-600 text-fsGrey-50;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      @apply bg-fsBlue-950 text-fsBlue-200;
+    }
+  }
+
+  &:focus {
+    @apply outline-fsBlue-200 outline outline-2;
+  }
+
+  &:active {
+    @apply bg-fsBlue-800 text-fsGrey-50;
+  }
+
+  &:disabled,
+  &[aria-disabled] {
+    @apply bg-fsGrey-200 text-fsGrey-500;
+    cursor: not-allowed;
+  }
+
+  &.secondary {
+    @apply border;
+    @apply bg-opacity-0;
+    border-color: currentColor;
+    color: currentColor;
+    padding: 0.7rem 1.7rem;
+
+    @media (hover: hover) {
+      &:hover {
+        @apply bg-fsBlue-950 text-fsBlue-200;
+      }
+    }
+
+    &:focus {
+      @apply outline-fsBlue-500 border-fsBlue-100 bg-fsBlue-100 text-fsGrey-950;
+    }
+
+    &:active {
+      @apply bg-fsBlue-600;
+    }
+
+    &:disabled,
+    &[aria-disabled] {
+      @apply bg-opacity-0 border-fsGrey-300 text-fsGrey-300;
+    }
+
+    @screen xl {
+      padding: 2.1rem;
+    }
+  }
+
+  &.icon {
+    border-radius: 3.4rem;
+    padding: 2.2rem;
+    width: auto;
+
+    svg {
+      height: 2.4rem;
+      margin: 0;
+      width: 2.4rem;
+    }
+
+    &.small {
+      border-radius: 2rem;
+      padding: 1.2rem;
+      height: 4rem;
+      width: 4rem;
+
+      svg {
+        height: 1.6rem;
+        width: 1.6rem;
+      }
+    }
+  }
+
+  &.large {
+    padding: 2.2rem;
+  }
+
+  &.small {
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+
+    @screen xl {
+      border-radius: 0.4rem;
+      padding: 0.8rem 1.8rem;
+    }
+  }
+
+  &.text {
+    padding: 0;
+    background-color: transparent;
+    text-decoration: underline;
+    color: currentColor;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled,
+    &[aria-disabled] {
+      @apply text-fsGrey-300;
+    }
+  }
+}

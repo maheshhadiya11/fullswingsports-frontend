@@ -1,0 +1,115 @@
+@import 'styles/variables';
+
+.root {
+}
+
+.ContentWrapper {
+  @apply col-span-full;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem 0;
+
+  @screen md {
+    flex-direction: row;
+    gap: 0 1.8rem;
+  }
+
+  @screen xl {
+    @apply col-start-2 col-span-10;
+    gap: 0 2.4rem;
+  }
+
+  @screen xxl {
+    @apply col-start-1 col-span-full;
+    gap: 0 3rem;
+  }
+}
+
+.ContentArea {
+  @apply bg-fsGrey-50 text-fsGrey-950;
+  border-radius: 0.8rem;
+  padding: 3.2rem 2.4rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+
+  @screen md {
+    padding: 4.8rem 2.4rem;
+    width: 31.8%;
+  }
+
+  @screen xl {
+    border-radius: 1.2rem;
+    padding: 6.4rem 3.2rem;
+  }
+
+  @screen xxl {
+    padding: 8rem 4rem;
+  }
+}
+
+.TextWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  @screen md {
+    gap: 1.6rem;
+  }
+
+  @screen xl {
+    gap: 2rem;
+  }
+
+  @screen xxl {
+    gap: 2.4rem;
+  }
+}
+
+.CtaWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1.6rem;
+  margin-top: 3.2rem;
+
+  @screen md {
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 1.6rem;
+    min-height: 4rem;
+  }
+
+  @screen xl {
+    gap: 2.4rem;
+    margin-top: 2rem;
+    min-height: 6.8rem;
+  }
+
+  @screen xxl {
+    gap: 3.2rem;
+    margin-top: 3.2rem;
+  }
+  a {
+    white-space: break-spaces;
+  }
+}
+
+.ImgArea {
+  @apply col-span-full;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  border-radius: 0.8rem;
+  flex-grow: 1;
+
+  @screen md {
+    aspect-ratio: 4/3;
+  }
+
+  @screen xl {
+    border-radius: 1.2rem;
+  }
+}

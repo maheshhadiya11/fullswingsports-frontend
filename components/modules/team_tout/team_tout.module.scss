@@ -1,0 +1,123 @@
+@import 'styles/variables';
+
+.root {
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+  position: fixed !important;
+  bottom: 6.4rem;
+  width: 100%;
+  padding: 0 1.2rem;
+
+  .modalButton {
+    @apply bg-fsBlue-600;
+    width: 100%;
+    max-width: 47.8rem;
+    display: flex;
+    border-radius: 0.8rem;
+    align-items: center;
+    padding: 0.8rem 2.4rem 0.8rem 0.8rem;
+    &:hover {
+      @apply bg-fsBlue-900;
+    }
+  }
+
+  .icon {
+    @apply transition-all duration-300 ease-in-out;
+    margin-left: auto;
+  }
+  .teamName {
+    @apply caption-label text-fsGrey-50;
+    margin-bottom: 0.8rem;
+    opacity: 0.5;
+  }
+}
+
+.popover {
+  @apply bg-fsGrey-950 text-white;
+  background-color: theme('colors.fsGrey.950') !important;
+  color: white !important;
+  width: 47.8rem;
+  border-radius: 0.8rem !important;
+  overflow: scroll;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 2.7rem 2.1rem 2.1rem 3.1rem;
+
+  .listOverlay {
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 79.63%, theme('colors.fsGrey.950') 95.25%);
+      z-index: 2;
+      pointer-events: none;
+    }
+  }
+  .athletesList {
+    display: flex;
+    flex-direction: column;
+    max-height: 48rem;
+    overflow: scroll;
+    scroll-behavior: smooth;
+  }
+  .listItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.8rem;
+  }
+
+  .popoverTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  .teamName {
+    @apply button-label text-white;
+  }
+
+  .currentAthlete {
+    @apply border-fsBlue-600 border-2;
+    position: relative;
+    border-radius: 0.8rem;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(0deg, rgba(47, 89, 255, 0.2), rgba(47, 89, 255, 0.2));
+      z-index: 1;
+    }
+  }
+}
+
+.image {
+  width: 17.4rem;
+  height: 7.5rem;
+  border-radius: 0.8rem;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin-left: 1.6rem;
+  text-align: left;
+}
+
+.name {
+  @apply team-caption;
+  text-align: left;
+  max-width: min-content;
+}

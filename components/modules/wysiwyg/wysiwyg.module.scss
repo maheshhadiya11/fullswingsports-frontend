@@ -1,0 +1,7 @@
+@import 'styles/variables';
+
+.content {
+  @apply col-span-full;
+  @apply md:col-span-4 md:col-start-2;
+  @apply xl:col-span-8 xl:col-start-3;
+}

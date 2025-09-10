@@ -1,0 +1,28 @@
+@import 'styles/variables';
+
+.root {
+  --gap: 1.6rem;
+  position: sticky;
+  top: var(--gap);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0 var(--gap);
+  margin-top: 2.4rem;
+
+  @screen md {
+    --gap: 4.7rem;
+     margin-top: 5.6rem;
+     top: calc(var(--gap) - 2rem);
+     
+    &.activeNotification{
+      margin-top: 8.6rem;
+    }
+
+
+  }
+
+  @screen xl {
+    --gap: 5rem;
+  }
+}

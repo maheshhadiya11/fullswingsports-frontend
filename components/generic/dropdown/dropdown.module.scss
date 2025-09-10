@@ -1,0 +1,48 @@
+@import 'styles/variables';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  color: theme('colors.fsGrey.950');
+
+  .label {
+    @apply caption-label;
+    margin-bottom: 0.4rem;
+  }
+
+  .select {
+    @apply font-sans body-copy-2;
+    border-radius: 0.8rem;
+    border-color: theme('colors.fsGrey.300');
+
+    svg {
+      fill: theme('colors.fsGrey.950');
+    }
+  }
+  :global(.MuiSelect-select) {
+    padding: 1.4rem 3.2rem 1.4rem 1.6rem;
+  }
+  :global(.MuiOutlinedInput-notchedOutline) {
+    border-color: theme('colors.fsGrey.300');
+  }
+  :global(.Mui-focused .MuiOutlinedInput-notchedOutline) {
+    border-color: theme('colors.fsBlue.500');
+  }
+  :global(.MuiOutlinedInput-notchedOutline:hover) {
+    border-color: theme('colors.fsGrey.300') !important;
+  }
+}
+
+.menuItem {
+  &.menuItem {
+    @apply font-sans body-copy-2;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  &.selectedMenuItem {
+    @apply copy-medium;
+    background-color: transparent;
+  }
+}

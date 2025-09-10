@@ -1,0 +1,110 @@
+.background-wrap {
+  @apply text-fsGrey-50;
+  border: 1px solid transparent;
+  border-width: 1px 0;
+  position: relative;
+
+  > div {
+    position: relative;
+  }
+
+  &::before {
+    @apply bg-fsGrey-950;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+  }
+
+  @screen xl {
+    &::before {
+      border-radius: 2.4rem;
+      left: 2.7rem;
+      right: 2.7rem;
+    }
+  }
+
+  @screen xxl {
+    &::before {
+      left: 5rem;
+      right: 5rem;
+    }
+  }
+  padding-bottom: 8rem;
+  @screen md {
+    padding-bottom: 12.8rem;
+  }
+  &.overlap-top,
+  &.overlap-both {
+    &::before {
+      top: 8rem;
+    }
+    &.spacing-small {
+      &::before {
+        top: 12rem;
+      }
+    }
+    &.spacing-medium {
+      &::before {
+        top: 14rem;
+        @screen xxl {
+          top: 20.4rem;
+        }
+      }
+    }
+    &.spacing-large {
+      &::before {
+        top: 16rem;
+      }
+    }
+    &.spacing-xlarge {
+      &::before {
+        top: 20rem;
+      }
+    }
+    div:first-of-type {
+      &.spacing-small,
+      &.spacing-medium,
+      &.spacing-large,
+      &.spacing-xlarge {
+        margin-top: 0;
+      }
+      .top-headline {
+        @apply text-fsGrey-950;
+      }
+    }
+  }
+  &.overlap-bottom,
+  &.overlap-both {
+    padding-bottom: 0;
+    &::before {
+      bottom: 8rem;
+    }
+  }
+
+  &.overlap-stretch {
+    &::before {
+      bottom: -4.8rem;
+    }
+  }
+
+  .athlete & {
+    &:last-of-type {
+      padding-bottom: 6.4rem;
+
+      &::before {
+        bottom: -20rem;
+      }
+
+      @screen xxl {
+        padding-bottom: 12.4rem;
+
+        &::before {
+          bottom: -24rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,178 @@
+@import 'styles/variables';
+
+.root {
+}
+
+.card {
+  @apply col-span-full bg-fsGrey-50;
+  border-radius: 1.2rem;
+  overflow: hidden;
+
+  &.left {
+    margin-bottom: 1.6rem;
+    @screen md {
+      @apply col-span-4;
+      margin-bottom: 0;
+    }
+    @screen xl {
+      @apply col-span-5 col-start-2;
+    }
+    @screen xxl {
+      @apply col-span-6;
+      margin-left: -9rem;
+    }
+  }
+
+  &.right {
+    @screen md {
+      @apply col-span-4;
+    }
+    @screen xl {
+      @apply col-span-5;
+    }
+    @screen xxl {
+      @apply col-span-6;
+      margin-right: -9rem;
+    }
+  }
+
+  &.right,
+  &.left {
+    .content {
+      @screen md {
+        padding: 4rem 5rem;
+      }
+      @screen xl {
+        padding: 5.6rem 6.2rem;
+      }
+      @screen xxl {
+        padding: 8rem 9rem;
+      }
+    }
+  }
+
+  &.leftRight {
+    display: flex;
+    flex-direction: column;
+
+    .content {
+      flex-grow: 1;
+    }
+
+    .media {
+      flex-shrink: 0;
+    }
+
+    .buttonContainer {
+      margin-top: auto;
+    }
+  }
+
+  &.fullWidth {
+    @apply col-span-full;
+
+    + .card {
+      @apply mt-24;
+    }
+
+    @screen md {
+      display: flex;
+    }
+
+    @screen xl {
+      @apply col-span-10 col-start-2;
+    }
+
+    @screen xxl {
+      @apply col-span-full;
+      margin: 0 -9rem;
+    }
+
+    .media {
+      @screen md {
+        width: 50%;
+        aspect-ratio: 390/405;
+      }
+      @screen xl {
+        width: 48%;
+        aspect-ratio: 482/405;
+      }
+      @screen xxl {
+        width: 50%;
+        aspect-ratio: 737/405;
+      }
+    }
+
+    .content {
+      flex-direction: column;
+      @screen md {
+        padding: 5.6rem;
+        justify-content: center;
+        width: 50%;
+      }
+      @screen xl {
+        width: 52%;
+        padding: 8rem 9rem;
+      }
+      @screen xxl {
+        width: 50%;
+      }
+    }
+  }
+
+  .media {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+
+  .content {
+    @apply text-fsGrey-950;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3.2rem 2.4rem;
+  }
+
+  .eyebrow {
+    @apply caption-label;
+    margin-bottom: 2.4rem;
+  }
+
+  .headline {
+    @apply headline-h5;
+    margin-bottom: 0.6rem;
+  }
+
+  .headline,
+  .eyebrow {
+    @screen md {
+      margin-bottom: 1.6rem;
+    }
+    @screen xxl {
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  .copy {
+    margin-bottom: 2.4rem;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1.6rem;
+
+    @screen md {
+      flex-flow: row wrap;
+      width: auto;
+    }
+  }
+
+  .primaryCta {
+    @screen md {
+      margin-right: 1.6rem;
+    }
+  }
+}

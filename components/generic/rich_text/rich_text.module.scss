@@ -1,0 +1,122 @@
+@import '../../../styles/variables';
+
+.root {
+  h2 {
+    @apply headline-h5;
+    &:not(:first-child) {
+      margin-top: 6.4rem;
+      margin-bottom: 3.2rem;
+    }
+
+    strong {
+      @apply font-bold;
+    }
+  }
+  h3 {
+    @apply body-copy-1;
+    margin: 1.6rem 0;
+  }
+
+  hr {
+    @apply border-fsGrey-400;
+    margin: 6.4rem 0;
+    @screen md {
+      margin: 8rem 0;
+    }
+    @screen xl {
+      margin: 10.4rem 0;
+    }
+    @screen xxl {
+      margin: 6.4rem 0;
+    }
+  }
+
+  p,
+  li {
+    @apply body-copy-2;
+  }
+
+  p {
+    + p {
+      margin-top: 1.4em;
+    }
+  }
+  &.ttac {
+    p,
+    li {
+      @apply body-copy-1;
+    }
+    h5 {
+      @apply body-copy-1 font-medium;
+      margin-bottom: 1.2rem;
+    }
+  }
+  strong {
+    @apply font-medium;
+  }
+
+  a {
+    @apply text-fsBlue-600;
+  }
+
+  ul {
+    padding-left: 2.2rem;
+    margin: 1.4rem 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      margin-bottom: 0.8rem;
+      &::before {
+        @apply bg-fsBlue-500;
+        content: '';
+        position: absolute;
+        left: -2.2rem;
+        top: 1.2rem;
+        @screen md{
+          top: 1rem;
+        }
+        @screen xl{
+          top: 1.2rem;
+        }
+        @screen xxl{
+          top: 1.4rem;
+        }
+        transform: translateY(-50%);
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  ol {
+    @apply body-copy-1;
+    margin: 1.6rem 0;
+    padding-left: 4.8rem;
+    list-style: none;
+    counter-reset: item;
+    li {
+      position: relative;
+      margin-bottom: 0.8rem;
+      &::before {
+        @apply text-fsBlue-500 body-copy-1 font-medium;
+        content: counter(item, decimal-leading-zero) '.';
+        counter-increment: item;
+        position: absolute;
+        left: -4.8rem;
+        top: 1.2rem;
+        @screen md{
+          top: 1rem;
+        }
+        @screen xl{
+          top: 1.2rem;
+        }
+        @screen xxl{
+          top: 1.4rem;
+        }
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

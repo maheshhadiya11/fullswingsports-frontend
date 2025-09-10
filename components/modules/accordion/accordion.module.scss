@@ -1,0 +1,122 @@
+@import 'styles/variables';
+
+.root {
+  .headline {
+    @apply col-span-full headline-h5;
+    margin-bottom: 2.4rem;
+    @screen md {
+      margin-bottom: 0;
+    }
+    @screen md {
+      @apply col-span-3;
+    }
+
+    @screen xl {
+      @apply col-start-1;
+    }
+
+    @screen xxl {
+      @apply headline-h6;
+    }
+  }
+
+  .questionContainer {
+    @apply col-span-full;
+    @apply border-t border-fsGrey-300;
+
+    @screen md {
+      @apply col-span-5 col-start-4;
+    }
+
+    @screen xl {
+      @apply col-span-9 col-start-4;
+    }
+  }
+
+  .accordionItem {
+    @apply body-copy-1 border-b border-fsGrey-300;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .accordionButton {
+    @apply body-copy-1;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+    padding: 3.5rem 0;
+
+    &.active {
+      @apply body-copy-1 font-medium;
+    }
+
+    &:hover {
+      .icon {
+        @apply bg-fsGrey-950;
+
+        &::before,
+        &::after {
+          @apply bg-white;
+        }
+      }
+    }
+  }
+  .icon {
+    @apply border;
+    border-color: currentColor;
+    transition: all 0.3s ease-in-out;
+    height: 4rem;
+    width: 4rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+
+    &::before,
+    &::after {
+      transition: all 0.3s ease-in-out;
+      content: '';
+      position: absolute;
+      background-color: currentColor;
+    }
+
+    &::before {
+      height: 1.1rem;
+      width: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &::after {
+      height: 0.2rem;
+      width: 1.1rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &.active {
+      &::before,
+      &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+  }
+  .accordionContent {
+    @apply body-copy-2;
+    margin-bottom: 3.5rem;
+
+    @screen md {
+      padding-right: 4.9rem;
+    }
+    @screen xl {
+      padding-right: 6.9rem;
+    }
+    @screen xxl {
+      padding-right: 11.4rem;
+    }
+  }
+}
