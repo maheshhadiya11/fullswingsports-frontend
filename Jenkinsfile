@@ -20,22 +20,22 @@ stages {
                         def status = 'SUCCESS'  
                         try {  
                             sh """  
-                                ssh -o StrictHostKeyChecking=no -tt ubuntu@13.56.28.241 'source ~/.bash_profile;
-                                cd /var/www/html/fullswingsports;
+                                ssh -o StrictHostKeyChecking=no -tt ubuntu@13.56.28.241 'source ~/.bash_profile;  
+                                cd /var/www/html/fullswingsports;  
 
                                 # Configure Git using token
-                                git remote set-url origin https://maheshhadiya11:$GIT_TOKEN@github.com/maheshhadiya11/fullswingsports-frontend.git;
-                                git fetch --all;
-                                git checkout staging;
-                                git pull origin staging;
+                                git remote set-url origin https://maheshhadiya11:$GIT_TOKEN@github.com/maheshhadiya11/fullswingsports-frontend.git;  
+                                git fetch --all;  
+                                git checkout staging;  
+                                git pull origin staging;  
 
                                 # Docker cleanup and redeploy
-                                docker stop stag-fullswing-sports || true;
-                                docker rm stag-fullswing-sports || true;
-                                docker rmi stag-fullswing-sports || true;
-                                docker build --no-cache -t stag-fullswing-sports .;
-                                docker run -d --name stag-fullswing-sports --restart=always -p 3000:3000 stag-fullswing-sports;
-                                docker system prune -f;
+                                docker stop stag-fullswing-sports || true;  
+                                docker rm stag-fullswing-sports || true;  
+                                docker rmi stag-fullswing-sports || true;  
+                                docker build --no-cache -t stag-fullswing-sports .;  
+                                docker run -d --name stag-fullswing-sports --restart=always -p 3000:3000 stag-fullswing-sports;  
+                                docker system prune -f;  
 
                                 exit;'  
                             """  
