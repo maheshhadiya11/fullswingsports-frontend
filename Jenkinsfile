@@ -1,31 +1,28 @@
 pipeline {
-    agent any
+    agent any 
 
     stages {
-        stage('Build Frontend in Staging') {
-            when {
-                expression {
-                    def branch = env.GIT_BRANCH?.replaceFirst('origin/', '')
-                    return branch == 'staging'
-                }
-            }
+        stage('Deploy Frontend in Staging') { 
             steps {
-                echo "Building on branch: ${env.GIT_BRANCH}"
-
-                withCredentials([string(credentialsId: 'github-fullswing-token', variable: 'GIT_TOKEN')]) {
-                    sshagent(['aws-fullswing']) {
-                        script {
-                            def statusCode = sh(
-                                script: "ssh -o StrictHostKeyChecking=no -tt ubuntu@13.56.28.241 'source ~/.bash_profile; cd /var/www/html/fullswingsports; git remote set-url origin https://maheshhadiya11:$GIT_TOKEN@github.com/maheshhadiya11/fullswingsports-frontend.git; git fetch --all; git checkout staging; git pull origin staging; docker stop stag-fullswing-sports || true; docker rm stag-fullswing-sports || true; docker rmi stag-fullswing-sports || true; docker build --no-cache -t stag-fullswing-sports .; docker run -d --name stag-fullswing-sports --restart=always -p 3000:3000 stag-fullswing-sports; docker system prune -f; exit;'", 
-                                returnStatus: true
-                            )
-                            if (statusCode != 0) {
-                                error("Deployment failed!")
-                            } else {
-                                echo "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
-                            }
-                        }
-                    }
+                sshagent(['aws-fullswing']) {
+                    sh """
+                    ssh -o StrictHostKeyChecking=no -tt ubuntu@13.56.28.241 '
+                        source ~/.bash_profile
+                        cd /var/www/html/fullswingsports
+                        
+                        # Stop and remove old Docker container if exists
+                        docker stop stag-fullswing-sports || true
+                        docker rm stag-fullswing-sports || true
+                        docker rmi stag-fullswing-sports || true
+                        
+                        # Build and run new Docker container
+                        docker build --no-cache -t stag-fullswing-sports .
+                        docker run -d --name stag-fullswing-sports --restart=always -p 3000:3000 stag-fullswing-sports
+                        
+                        docker system prune -f
+                        exit
+                    '
+                    """
                 }
             }
         }
@@ -33,6 +30,7 @@ pipeline {
 
     post {
         always {
+            // Clean workspace
             cleanWs()
             dir("${env.WORKSPACE}@tmp") { deleteDir() }
             dir("${env.WORKSPACE}@script") { deleteDir() }
