@@ -1,25 +1,19 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Build In Staging') {
             when {
-                expression {
-                    def branch = env.GIT_BRANCH?.replaceFirst('origin/', '')
-                    return branch == 'staging'
-                }
+                branch 'staging'
             }
             steps {
                 echo "Building only for staging branch..."
             }
         }
-
+        
         stage('Deploy Frontend in Staging') {
             when {
-                expression {
-                    def branch = env.GIT_BRANCH?.replaceFirst('origin/', '')
-                    return branch == 'staging'
-                }
+                branch 'staging'
             }
             steps {
                 sshagent(['aws-fullswing-ec2']) {
@@ -40,13 +34,13 @@ pipeline {
             }
         }
     }
-
+    
     post {
         always {
             cleanWs()
-            dir("${env.WORKSPACE}@tmp") { deleteDir() }
-            dir("${env.WORKSPACE}@script") { deleteDir() }
-            dir("${env.WORKSPACE}@script@tmp") { deleteDir() }
+            dir("\${env.WORKSPACE}@tmp") { deleteDir() }
+            dir("\${env.WORKSPACE}@script") { deleteDir() }
+            dir("\${env.WORKSPACE}@script@tmp") { deleteDir() }
         }
     }
 }
