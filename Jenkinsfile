@@ -1,6 +1,14 @@
 pipeline {
     agent any 
 
+    stage('Build In Staging') { 
+            when {
+                expression {
+                    // Extract branch name without 'origin/'
+                    def branch = env.GIT_BRANCH?.replaceFirst('origin/', '')
+                    return branch == 'staging'
+                }
+            }
     stages {
         stage('Deploy Frontend in Staging') { 
             steps {
