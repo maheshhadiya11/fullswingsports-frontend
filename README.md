@@ -1,5 +1,5 @@
 This is a [Next.js](https://nextjs.org/) project boilerplate.
-#test
+
 ## Getting Started
 1. Install and use the correct version of Node using NVM
 2. Copy the .env.local.example to .env.local
