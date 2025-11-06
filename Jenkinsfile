@@ -1,16 +1,26 @@
 pipeline {
-    agent any 
+    agent any
 
-    stage('Build In Staging') { 
+    stages {
+        stage('Build In Staging') {
             when {
                 expression {
-                    // Extract branch name without 'origin/'
                     def branch = env.GIT_BRANCH?.replaceFirst('origin/', '')
                     return branch == 'staging'
                 }
             }
-    stages {
-        stage('Deploy Frontend in Staging') { 
+            steps {
+                echo "Building only for staging branch..."
+            }
+        }
+
+        stage('Deploy Frontend in Staging') {
+            when {
+                expression {
+                    def branch = env.GIT_BRANCH?.replaceFirst('origin/', '')
+                    return branch == 'staging'
+                }
+            }
             steps {
                 sshagent(['aws-fullswing-ec2']) {
                     sh """
@@ -19,14 +29,9 @@ pipeline {
                         cd /var/www/html/fullswingsports
                         git pull
                         docker build --no-cache -t stag-fullswing-sports .
-                        # Stop and remove old Docker container if exists
                         docker stop stag-fullswing-sports || true
                         docker rm stag-fullswing-sports || true
-                        
-                        # Build and run new Docker container
-                        
                         docker run -d --name stag-fullswing-sports --restart=always -p 3000:3000 stag-fullswing-sports
-                        
                         docker system prune -f
                         exit
                     '
@@ -38,7 +43,6 @@ pipeline {
 
     post {
         always {
-            // Clean workspace
             cleanWs()
             dir("${env.WORKSPACE}@tmp") { deleteDir() }
             dir("${env.WORKSPACE}@script") { deleteDir() }
