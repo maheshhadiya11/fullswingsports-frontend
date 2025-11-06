@@ -1,23 +1,13 @@
 pipeline {
     agent any
-
-    environment {
-        GIT_BRANCH = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
-    }
-
     stages {
-        stage('Build In Staging') {
+           stage('Build In Staging') { 
             when {
-                expression { env.GIT_BRANCH == 'staging' }
-            }
-            steps {
-                echo "✅ Building only for staging branch..."
-            }
-        }
-
-        stage('Deploy Frontend in Staging') {
-            when {
-                expression { env.GIT_BRANCH == 'staging' }
+                expression {
+                    // Extract branch name without 'origin/'
+                    def branch = env.GIT_BRANCH?.replaceFirst('origin/', '')
+                    return branch == 'staging'
+                }
             }
             steps {
                 sshagent(['aws-fullswing-ec2']) {
