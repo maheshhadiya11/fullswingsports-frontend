@@ -1,19 +1,23 @@
 pipeline {
     agent any
-    
+
+    environment {
+        GIT_BRANCH = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
+    }
+
     stages {
         stage('Build In Staging') {
             when {
-                branch 'staging'
+                expression { env.GIT_BRANCH == 'staging' }
             }
             steps {
-                echo "Building only for staging branch..."
+                echo "✅ Building only for staging branch..."
             }
         }
-        
+
         stage('Deploy Frontend in Staging') {
             when {
-                branch 'staging'
+                expression { env.GIT_BRANCH == 'staging' }
             }
             steps {
                 sshagent(['aws-fullswing-ec2']) {
@@ -34,13 +38,13 @@ pipeline {
             }
         }
     }
-    
+
     post {
         always {
             cleanWs()
-            dir("\${env.WORKSPACE}@tmp") { deleteDir() }
-            dir("\${env.WORKSPACE}@script") { deleteDir() }
-            dir("\${env.WORKSPACE}@script@tmp") { deleteDir() }
+            dir("${env.WORKSPACE}@tmp") { deleteDir() }
+            dir("${env.WORKSPACE}@script") { deleteDir() }
+            dir("${env.WORKSPACE}@script@tmp") { deleteDir() }
         }
     }
 }
