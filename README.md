@@ -1,6 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project boilerplate.
 
 ## Getting Started
+#test
 1. Install and use the correct version of Node using NVM
 2. Copy the .env.local.example to .env.local
 3. Install the node modules using yarn
