@@ -20,11 +20,11 @@ pipeline {
                 }
             }
             steps {
-                sshagent(['fullswing-stag']) {
+                sshagent(['aws-fullswing-ec2']) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no -tt ubuntu@13.56.42.221 '
+                    ssh -o StrictHostKeyChecking=no -tt ubuntu@13.56.28.241 '
                         source ~/.bash_profile
-                        cd /var/www/html/fullswingsports-staging/frontend
+                        cd /var/www/html/fullswingsports
                         git pull
                         docker build --no-cache -t stag-fullswing-sports .
                         docker stop stag-fullswing-sports || true
@@ -36,6 +36,14 @@ pipeline {
                     """
                 }
             }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+            dir("${env.WORKSPACE}@tmp") { deleteDir() }
+            dir("${env.WORKSPACE}@script") { deleteDir() }
+            dir("${env.WORKSPACE}@script@tmp") { deleteDir() }
         }
     }
 }
