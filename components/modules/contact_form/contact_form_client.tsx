@@ -1,42 +1,39 @@
 'use client'
 
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import cn from 'classnames'
 import { Page_Flexiblelayout_PageBuilder_ContactForm } from 'interfaces/types'
-import { FormData } from 'components/generic/form/form.interface'
-import Form from 'components/generic/form/form'
 import Link from 'next/link'
 import Icon, { IconOption } from 'components/generic/icon/icon'
 import styles from './contact_form.module.scss'
-import states from './states.json'
 
 export const typename = 'Flexiblelayout_PageBuilder_ContactForm'
 
-const installationTags = [
-  'Alabama',
-  'Alaska',
-  'American Samoa',
-  'Arizona',
-  'Arkansas',
-  'California',
-  'Colorado',
-  'Connecticut',
-  'Delaware',
-]
-const hearTags = [
-  'Alabama',
-  'Alaska',
-  'American Samoa',
-  'Arizona',
-  'Arkansas',
-  'California',
-  'Colorado',
-  'Connecticut',
-  'Delaware',
-]
-
 const ContactFormClient: FunctionComponent<{ module: Page_Flexiblelayout_PageBuilder_ContactForm }> = ({ module }) => {
   const { headline, copy, contactCards } = module
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  useEffect(() => {
+    // Load JotForm embed handler script
+    const script = document.createElement('script')
+    script.src = 'https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'
+    script.async = true
+    document.body.appendChild(script)
+
+    script.onload = () => {
+      // Initialize JotForm embed handler after script loads
+      if (window.jotformEmbedHandler && iframeRef.current) {
+        window.jotformEmbedHandler("iframe[id='JotFormIFrame-252875026101147']", 'https://form.jotform.com/')
+      }
+    }
+
+    return () => {
+      // Cleanup script on unmount
+      if (script.parentNode) {
+        script.parentNode.removeChild(script)
+      }
+    }
+  }, [])
 
   return (
     <div className={cn(styles.root, 'container')}>
@@ -45,11 +42,12 @@ const ContactFormClient: FunctionComponent<{ module: Page_Flexiblelayout_PageBui
         {copy && <p className={cn(styles.subline)}>{copy}</p>}
         <div className={cn(styles.leftColumn)}>
           <div className={cn(styles.ctaContainer)}>
-            {contactCards?.map((block) => {
+            {contactCards?.map((block, index) => {
               const Card = block?.link?.url ? Link : 'div'
               return (
                 <Card
-                  href={block?.link?.url}
+                  key={index}
+                  href={block?.link?.url || '#'}
                   className={cn(styles.ctaBox)}
                 >
                   <div className={cn(styles.icon)}>
@@ -62,27 +60,33 @@ const ContactFormClient: FunctionComponent<{ module: Page_Flexiblelayout_PageBui
             })}
           </div>
         </div>
-        {/* <Form
-          onSubmit={handleSubmit}
-          className={cn(styles.form)}
-          countries={states}
-          intallationTypes={installationTags}
-          hearFromChoices={hearTags}
-        /> */}
         <div className={cn(styles.form)}>
           <iframe
-            className="focus:outline-none"
-            src="https://www2.fullswinggolf.com/l/419982/2023-11-03/wdrfdy"
-            width="100%"
-            title="Contact Form"
-            height="1167"
-            frameBorder="0"
-            style={{ border: 0 }}
+            ref={iframeRef}
+            id="JotFormIFrame-252875026101147"
+            title="Contact Sales Form"
+            onLoad={() => window.parent.scrollTo(0, 0)}
+            allow="geolocation; microphone; camera; fullscreen; payment"
+            src="https://form.jotform.com/252875026101147"
+            style={{
+              minWidth: '100%',
+              maxWidth: '100%',
+              height: '539px',
+              border: 'none',
+            }}
+            scrolling="no"
           />
         </div>
       </div>
     </div>
   )
+}
+
+// Type declaration for JotForm global
+declare global {
+  interface Window {
+    jotformEmbedHandler: (selector: string, url: string) => void
+  }
 }
 
 export default ContactFormClient
