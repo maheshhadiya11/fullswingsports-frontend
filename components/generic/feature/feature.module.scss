@@ -1,0 +1,115 @@
+@import 'styles/variables';
+
+.root {
+  border-radius: 2.4rem;
+  overflow: hidden;
+
+  .image {
+    aspect-ratio: 398/675;
+
+    @screen md {
+      aspect-ratio: 780/370;
+    }
+
+    @screen xl {
+      aspect-ratio: 1016/480;
+    }
+
+    @screen xxl {
+      aspect-ratio: 1470/700;
+    }
+  }
+
+  .imageTopMobile {
+    aspect-ratio: 398/224;
+    border-radius: 0.8rem 0.8rem 0 0;
+  }
+
+  .overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
+  }
+
+  .overlayTopMobile {
+    @apply absolute inset-0;
+    border-radius: 0.8rem 0.8rem 0 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
+  }
+
+  .textContainer {
+    color: theme('colors.fsGrey.50');
+    @apply absolute inset-0;
+
+    @apply grid grid-cols-4 gap-20 content-end;
+
+    @screen md {
+      @apply grid grid-cols-8 gap-20 content-center;
+    }
+
+    @screen xl {
+      @apply grid grid-cols-10 gap-30 content-center;
+    }
+
+    @screen xl {
+      @apply grid grid-cols-12 gap-30 content-center;
+    }
+
+    & > div {
+      @apply px-24 md:px-0;
+      @apply xxl:ml-80 mb-18  md:mb-0;
+      @apply col-span-full md:col-span-3 md:col-start-2 xl:col-span-4 xl:col-start-2 xl:col-span-5 xl:col-start-2;
+    }
+
+    .eyebrow {
+      @apply caption-label inline-block;
+      @apply mb-24 md:mb-18 xl:mb-24 xxl:mb-40;
+    }
+
+    .headline {
+      @apply headline-h4;
+      @apply mb-8 md:mb-18 xl:mb-24 xxl:mb-16;
+    }
+
+    .copy {
+      @apply mb-24 md:mb-16 xl:mb-40;
+    }
+
+    .cta {
+      @apply inline-block w-full md:w-auto text-center;
+      @apply mb-16 md:mb-0 md:mr-16 xl:mr-32;
+    }
+
+    .buttonContainer {
+      @apply flex flex-col md:flex-row items-center;
+    }
+  }
+
+  .textContainerTopMobile {
+    padding-top: 2.6rem;
+    margin-bottom: 0;
+    position: static;
+    color: theme('colors.fsGrey.950');
+
+    .eyebrow {
+      margin-bottom: 1.6rem;
+    }
+
+    .copy {
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  .textContainerColorDark {
+    background-color: theme('colors.fsGrey.950');
+    color: theme('colors.fsGrey.50');
+    border-radius: 0 0 0.8rem 0.8rem;
+  }
+
+  &.desktopDark {
+    @apply bg-fsGrey-50;
+
+    .textContainer {
+      @apply text-fsGrey-950;
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@import '../../../styles/variables';
+
+.root {
+  display: flex;
+  align-items: center;
+  height: 6.8rem;
+}
+
+.bulletContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 1.2rem;
+  min-width: 7rem;
+
+  .paginationItem {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    display: block;
+    @apply bg-fsBlue-950 border border-fsBlue-950;
+    border-radius: 4px;
+    transition: width 0.2s linear;
+
+    &:before {
+      @apply bg-fsBlue-950;
+      content: '';
+      display: block;
+      margin: 1px;
+      height: 4px;
+      border-radius: 2px;
+    }
+
+    &:hover,
+    &.active {
+      &::before {
+        @apply border-fsBlue-950;
+      }
+    }
+  }
+
+  .activePaginationItem {
+    @apply bg-opacity-0;
+    width: 3.4rem;
+  }
+}
+
+.prevButton,
+.nextButton {
+  flex-shrink: 0;
+  width: 6.8rem;
+  height: 6.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3.4rem;
+  @apply bg-fsBlue-600 border border-fsBlue-600 text-fsGrey-50 transition-colors;
+
+  @media (hover: hover) {
+    &:hover {
+      @apply bg-fsBlue-950 text-fsBlue-200;
+    }
+
+    &:focus {
+      @apply outline-fsBlue-200 outline outline-2;
+    }
+  }
+
+  &:active {
+    @apply bg-fsBlue-800 text-fsGrey-50;
+  }
+
+  &.disabled {
+    border-color: currentColor;
+    background-color: transparent;
+    color: currentColor;
+  }
+}
+
+.prevButton {
+  margin-right: 4rem;
+}
+
+.nextButton {
+  margin-left: 4rem;
+}
+
+:global(.background-wrap),
+:global(.dark-ui) {
+  .paginationItem {
+    @apply bg-white border-white;
+
+    &::before,
+    &:hover::before {
+      @apply bg-white;
+    }
+  }
+
+  .activePaginationItem {
+    @apply bg-opacity-0;
+  }
+}

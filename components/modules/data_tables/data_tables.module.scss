@@ -1,0 +1,78 @@
+@import 'styles/variables';
+
+.root {
+  .headline {
+    @apply headline-h5;
+    margin-bottom: 0.8rem;
+  }
+  .copy {
+    @apply body-copy-2;
+    margin-bottom: 2.4rem;
+  }
+
+  .headlineContainer {
+    @apply col-span-full;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 4.8rem;
+    @screen md {
+      @apply col-span-6 col-start-2;
+    }
+    @screen xl {
+      @apply col-span-8 col-start-3;
+      margin-bottom: 5.8rem;
+    }
+    @screen xxl {
+      @apply col-span-10 col-start-2;
+    }
+  }
+  .row,
+  .headingRow {
+    @apply font-medium col-span-full border-b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem;
+
+    @screen md {
+      @apply col-span-6 col-start-2;
+    }
+    @screen xl {
+      @apply col-span-8 col-start-3;
+    }
+    @screen xxl {
+      @apply col-span-10 col-start-2;
+    }
+    &:not(.headingRow) {
+      @apply border-t-0;
+    }
+  }
+  .row {
+    @apply body-copy-2;
+  }
+  .headingRow {
+    @apply caption-label;
+  }
+  .label {
+    flex-grow: 1;
+    display: block;
+    width: 72%;
+    &.hasTwoValues {
+      width: 60%;
+    }
+  }
+
+  .value {
+    margin-left: 1.6rem;
+    display: flex;
+  }
+  .singleValue {
+    width: 28%;
+    justify-content: flex-end;
+  }
+  .doubleValue {
+    justify-content: center;
+    width: 20%;
+  }
+}

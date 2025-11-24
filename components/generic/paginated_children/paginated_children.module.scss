@@ -1,0 +1,12 @@
+@import '../../../styles/variables';
+
+.root {
+  @screen xxl {
+    max-width: none;
+    padding: 0 5rem;
+  }
+
+  .loadMoreButton {
+    width: 100%;
+  }
+}

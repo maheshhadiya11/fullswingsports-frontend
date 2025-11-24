@@ -1,0 +1,42 @@
+@import 'styles/variables';
+
+.root {
+  .icon {
+    @apply font-semibold col-start-1;
+    @screen xl {
+      @apply col-start-3;
+    }
+    font-family: neue-haas-grotesk-display;
+    font-size: 5.2rem;
+    line-height: 1;
+    margin-top: -0.2rem;
+    display: inline-block;
+  }
+  .questionText,
+  .answerText {
+    @apply body-copy-2;
+    @apply col-span-3 col-start-2;
+
+    @screen md {
+      @apply col-span-7 col-start-2;
+    }
+    @screen xl {
+      @apply col-span-7 col-start-4;
+    }
+  }
+  .separator,
+  .separatorAfter {
+    @apply col-span-full border-b border-fsGrey-300;
+    margin-top: 1.6rem;
+
+    @screen xl {
+      @apply col-span-8 col-start-3;
+    }
+  }
+  .separator {
+    margin-bottom: 1.6rem;
+  }
+  .separatorAfter {
+    margin-bottom: 6.4rem;
+  }
+}

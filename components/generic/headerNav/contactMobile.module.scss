@@ -1,0 +1,43 @@
+@import 'styles/variables';
+
+.contactMobile {
+  margin-top: auto;
+  .buttonContainer {
+    @screen md {
+      display: flex;
+      gap: 2.4rem;
+    }
+  }
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    svg {
+      height: 1.6rem;
+    }
+    @screen md {
+      width: 50%;
+    }
+  }
+}
+
+.cards {
+  height: 100%;
+  display: flex;
+  gap: 0.4rem;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  @screen md {
+    justify-content: center;
+    gap: 3.5rem;
+  }
+}
+
+.card {
+  height: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+}

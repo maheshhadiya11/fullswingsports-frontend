@@ -1,0 +1,32 @@
+@import 'styles/variables';
+
+.root {
+  overflow: hidden;
+  border-radius: 1.2rem;
+  display: flex;
+  flex-flow: column;
+  gap: 1px;
+  transform: translateY(-9rem);
+
+  @screen md {
+    flex-flow: row;
+  }
+}
+
+.block {
+  @apply bg-fsBlue-600;
+  flex: 1 1 33.33%;
+  min-height: 18.2rem;
+  padding: 2.4rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+
+  @media (hover: hover) {
+    @apply transition-colors;
+
+    &:hover {
+      @apply bg-fsBlue-950;
+    }
+  }
+}

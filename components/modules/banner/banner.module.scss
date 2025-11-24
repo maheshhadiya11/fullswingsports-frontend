@@ -1,0 +1,87 @@
+@import 'styles/variables';
+
+.root {
+  .Wrapper {
+    position: relative;
+    @apply col-span-full transition-colors;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    color: theme('colors.white');
+    background-color: theme('colors.fsBlue.600');
+
+    @screen md {
+      display: flex;
+      flex-direction: row;
+    }
+
+    @screen xl {
+      @apply col-start-2 col-span-10;
+    }
+
+    &:hover {
+      background-color: theme('colors.fsBlue.950');
+    }
+  }
+
+  .ImgWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+
+    @screen md {
+      flex-shrink: 0;
+      aspect-ratio: 302/164;
+      width: 38.8%;
+    }
+
+    @screen xl {
+      aspect-ratio: 302/172;
+      width: 29.7%;
+    }
+
+    @screen xxl {
+      width: 28.2%;
+    }
+  }
+
+  .ContentWrapper {
+    display: flex;
+    padding: 4.4rem 2.4rem;
+
+    @screen md {
+      padding: 3rem;
+    }
+  }
+
+  .Content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem 0;
+    margin: auto 0;
+    align-items: flex-start;
+  }
+
+  .Headline {
+    @apply headline-h6 copy-bold;
+  }
+
+  .Copy {
+    @apply body-copy-2;
+  }
+  .cta {
+    margin-top: 1.6rem;
+    width: auto;
+    @screen md {
+      margin-top: 0;
+    }
+    // &:before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   z-index: 1;
+    // }
+  }
+}

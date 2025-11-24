@@ -1,0 +1,27 @@
+@import '../../../styles/variables';
+
+.root {
+  min-height: 6.2rem;
+  position: relative;
+  padding: 1.6rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @screen md {
+    margin-bottom: -6.2rem;
+  }
+
+  .button {
+    white-space: break-spaces;
+    line-height: 1.4;
+    text-align: left;
+    &:focus {
+      outline: none;
+    }
+    @screen md {
+      text-align: center;
+    }
+  }
+}

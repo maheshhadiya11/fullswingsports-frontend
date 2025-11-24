@@ -1,0 +1,100 @@
+@import 'styles/variables';
+
+.root {
+  @apply bg-white;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  pointer-events: auto;
+  z-index: 20;
+}
+
+.overlay {
+  @apply bg-fsGrey-950 bg-opacity-80;
+}
+
+.closeBtn[type='button'] {
+  @apply bg-fsGrey-950;
+  top: 1.6rem;
+  right: 1.6rem;
+  position: absolute;
+  z-index: 1;
+
+  @screen md {
+    top: 4rem;
+    right: 4rem;
+  }
+}
+
+.content {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  padding-bottom: 5rem;
+  z-index: 0;
+
+  .overlay & {
+    padding-bottom: 0;
+  }
+}
+
+.videoWrapper,
+.galleryWrapper {
+  @apply container default-grid;
+  height: 100%;
+  width: 100%;
+  place-items: center stretch;
+}
+
+.video {
+  @apply col-span-full;
+  aspect-ratio: 16/9;
+  border-radius: 0.8rem;
+  @screen xl {
+    @apply col-span-10 col-start-2;
+  }
+
+  @screen xxl {
+    @apply col-span-full;
+    margin: 0 -9rem;
+  }
+}
+
+.video {
+  overflow: hidden;
+}
+
+.galleryWrapper {
+  @apply text-fsGrey-50;
+
+  :global(.modal-wrap) {
+    @apply col-span-full;
+    aspect-ratio: 16/9;
+    border-radius: 0.8rem;
+    @screen xl {
+      @apply col-span-10 col-start-2;
+    }
+
+    @screen xxl {
+      @apply col-span-full;
+      margin: 0 -9rem;
+    }
+
+    div[class*='full'] {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  :global(.swiper-slide) {
+    img {
+      border-radius: 0.8rem;
+
+      @screen md {
+        border-radius: 2.4rem;
+      }
+    }
+  }
+}

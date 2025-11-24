@@ -1,0 +1,32 @@
+@import '../../../styles/variables';
+
+.root {
+  @apply transition-colors caption-label;
+  max-width: max-content;
+  border-radius: 50rem;
+  background-color: theme('colors.fsGrey.50');
+  border: 1px solid theme('colors.fsGrey.50');
+  color: theme('colors.fsGrey.950');
+  padding: 1.2rem 2rem;
+
+  &.selected {
+    background-color: theme('colors.fsGrey.950');
+    border: 1px solid theme('colors.fsGrey.950');
+    color: white;
+  }
+  &:hover {
+    color: theme('colors.fsGrey.950');
+    background-color: theme('colors.fsGrey.50');
+    border: 1px solid theme('colors.fsGrey.300');
+  }
+  &:active {
+    color: white;
+    background-color: theme('colors.fsBlue.900');
+    border: 1px solid theme('colors.fsBlue.900');
+  }
+  &:disabled {
+    color: theme('colors.fsGrey.400');
+    background-color: theme('colors.fsGrey.100');
+    border: 1px solid theme('colors.fsGrey.100');
+  }
+}

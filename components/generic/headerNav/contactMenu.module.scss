@@ -1,0 +1,147 @@
+@import 'styles/variables';
+
+.contactMenu {
+  @apply bg-white;
+  padding: 2.4rem;
+
+  @screen xl {
+    padding: 0.4rem;
+  }
+}
+
+.contactCards {
+  width: (708/1356 * 100%);
+}
+
+.cards {
+  height: 100%;
+  display: flex;
+  gap: 0.4rem;
+
+  li {
+    flex: 1 1 33.33%;
+  }
+}
+
+.card {
+  @apply bg-fsGrey-100 transition-colors;
+  height: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+  border-radius: 0.8rem;
+  padding: 1.8rem 2.4rem;
+  transition: opacity 0.3s ease-out;
+  transition-duration: 150ms, 150ms, 300ms;
+  transition-property: background-color, color, opacity;
+
+  @for $n from 1 through 4 {
+    li:nth-child(#{$n}) & {
+      transition-delay: 0s, 0s, #{0.3s + 0.2s * $n};
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      @apply bg-fsBlue-600 text-white;
+    }
+  }
+}
+
+.links {
+  flex-grow: 1;
+}
+
+.subLinks {
+  padding: 3.8rem 0.6rem;
+
+  li {
+    margin-bottom: 1.6rem;
+    transition: opacity 0.45s ease-out;
+
+    @for $n from 1 through 6 {
+      &:nth-child(#{$n}) {
+        transition-delay: #{0.8s + 0.075s * $n};
+      }
+    }
+  }
+
+  @screen xl {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7.1rem 0.6rem;
+
+    ul {
+      pointer-events: none;
+      &:hover {
+        .subLink {
+          @apply opacity-50;
+
+          &:hover {
+            @apply opacity-100;
+          }
+        }
+      }
+    }
+    @screen xxl {
+      padding: 8.1rem 0.6rem;
+    }
+
+    li {
+      pointer-events: auto;
+      @apply my-32;
+    }
+  }
+}
+
+.subLink {
+  @media (hover: hover) {
+    display: block;
+    transform: translateX(0);
+    @apply transition-transform;
+    transition-property: opacity, transform;
+    position: relative;
+
+    &::before {
+      @apply bg-fsBlue-600 transition-opacity;
+      bottom: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      left: -1.4rem;
+      top: 50%;
+      height: 0.4rem;
+      border-radius: 0.4rem;
+      margin-top: -0.2rem;
+      width: 0.4rem;
+
+      @screen xl {
+        content: '';
+      }
+    }
+
+    &:hover {
+      transform: translateX(1.4rem);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.open {
+  .card,
+  .subLinks li {
+    opacity: 1;
+  }
+}
+
+.closed {
+  .card,
+  .subLinks li {
+    opacity: 0;
+  }
+}

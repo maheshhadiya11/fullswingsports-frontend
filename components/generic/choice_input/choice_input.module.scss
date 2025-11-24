@@ -1,0 +1,151 @@
+@import '../../../styles/variables';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  .label {
+    @apply text-fsBlue-800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .checkbox,
+    .radio,
+    .checkmark-circle {
+      @apply border border-fsGrey-500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .checkbox {
+      border-radius: 0.4rem;
+      &:hover {
+        @apply bg-fsBlue-50 border-fsBlue-800;
+      }
+    }
+    .icon {
+      display: none;
+    }
+    .hiddenInput {
+      @apply sr-only;
+      &:checked {
+        & + .checkbox,
+        & + .radio {
+          @apply bg-fsBlue-50 border-fsBlue-400;
+          &:hover {
+            @apply bg-fsBlue-50 border-fsBlue-800;
+          }
+        }
+        & + .checkbox .icon,
+        & + .checkmark-circle .icon {
+          display: block;
+        }
+      }
+      &:focus {
+        & + .checkbox,
+        & + .radio,
+        & + .checkmark-circle {
+          @apply bg-fsBlue-50 border-fsBlue-400;
+          box-shadow: 0px 0px 0px 4px theme('colors.lime');
+        }
+      }
+    }
+
+    .radio {
+      position: relative;
+      border-radius: 50%;
+      &:hover {
+        @apply bg-fsBlue-50 border-fsBlue-800;
+      }
+    }
+
+    .hiddenInput:checked + .radio::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.8rem;
+      height: 0.8rem;
+      background-color: theme('colors.fsBlue.800');
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .checkmark-circle {
+      @apply border-fsGrey-300 text-white;
+      border-radius: 50%;
+
+      &:hover {
+        @apply bg-fsBlue-50 border-fsBlue-800;
+      }
+    }
+
+    .hiddenInput:checked + .checkmark-circle {
+      @apply bg-fsBlue-400 border-fsBlue-400;
+      &:hover {
+        @apply bg-fsBlue-800 border-fsBlue-800;
+      }
+    }
+    .text {
+      @apply text-fsGrey-500 body-copy-2;
+      margin-left: 1.2rem;
+      display: flex;
+      align-self: center;
+    }
+
+    .hiddenInput {
+      &:checked,
+      &:focus,
+      &:hover {
+        ~ .text {
+          @apply text-fsGrey-800;
+        }
+      }
+    }
+
+    &.disabled {
+      cursor: default;
+      .checkbox,
+      .radio,
+      .checkmark-circle {
+        @apply bg-fsGrey-100 border-fsGrey-100;
+
+        &:hover {
+          @apply bg-fsGrey-100 border-fsGrey-100;
+        }
+      }
+      .checkmark-circle {
+        @apply bg-fsGrey-100 border-fsGrey-100;
+        background-color: theme('colors.fsGrey.100') !important;
+        border-color: theme('colors.fsGrey.100') !important;
+      }
+      .checkmark-circle + .icon {
+        display: block;
+      }
+      .text {
+        @apply text-fsGrey-300;
+        &:hover {
+          color: theme('colors.fsGrey.300') !important;
+        }
+      }
+
+      .hiddenInput:hover {
+        ~ .text {
+          @apply text-fsGrey-300;
+        }
+      }
+    }
+  }
+
+  .supportText {
+    @apply body-copy-3 text-fsGrey-500;
+    margin-left: 3.2rem;
+    margin-top: 0.4rem;
+    &.disabled {
+      @apply text-fsGrey-300;
+    }
+  }
+}
