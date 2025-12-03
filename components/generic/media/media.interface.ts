@@ -8,5 +8,6 @@ export interface MediaItemInterface {
 
 export default interface MediaInterface {
   media: MediaItemInterface
+  mediamobile?: MediaItemInterface
   className?: string
 }
