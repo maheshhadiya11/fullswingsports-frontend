@@ -3,6 +3,7 @@ import cn from 'classnames'
 import { Page_Flexiblelayout_PageBuilder_Hero } from 'interfaces/types'
 import CTA from 'components/generic/cta/cta'
 import Media from 'components/generic/media/media'
+import ResponsiveMediaFile from 'components/generic/media/responsiveMedia'
 import styles from './hero.module.scss'
 import HeroAffirm from './hero_affirm'
 
@@ -49,8 +50,9 @@ const HeroModule: FunctionComponent<HeroProps> = ({ module, first = false, class
       <div className={cn(styles.root, color && styles[color], layout && styles[layout], size && styles[size])}>
         {media && layout !== 'post' && (
           <div className={cn(styles.bg, imageSize && styles[`bg-${imageSize}`])}>
-            <Media
+            <ResponsiveMediaFile
               media={media}
+              mediamobile={mediaMobile}
               className={imageSize && styles[imageSize]}
             />
             {showGradient && <div className={cn(styles.bgGradient)} />}
