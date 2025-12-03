@@ -32,11 +32,11 @@ export default gql`
       videoId
     }
     mediaMobile { 
-    mediaType 
-    image { 
-    ...Asset 
-    } 
-    videoId 
+      mediaType
+      image {
+        ...Asset
+      }
+      videoId
     } 
     color
     size
