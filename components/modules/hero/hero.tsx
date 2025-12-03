@@ -25,6 +25,7 @@ const HeroModule: FunctionComponent<HeroProps> = ({ module, first = false, class
     cta,
     secondaryCta,
     media,
+    mediaMobile,
     color,
     layout,
     size,
