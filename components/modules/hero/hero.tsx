@@ -10,7 +10,9 @@ import HeroAffirm from './hero_affirm'
 export const typename = 'Flexiblelayout_PageBuilder_Hero'
 
 interface HeroProps {
-  module: Partial<Page_Flexiblelayout_PageBuilder_Hero>
+  module: Partial<Page_Flexiblelayout_PageBuilder_Hero> & {
+    mediaMobile?: any   
+  }
   first?: boolean
   className?: string
 }
