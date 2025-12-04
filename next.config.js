@@ -242,6 +242,10 @@ module.exports = {
         destination: `${process.env.NEXT_PUBLIC_CMS_URL}/sitemap_index.xml`,
       },
       {
+        source: '/main-sitemap.xsl',
+        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/main-sitemap.xsl`,
+      },
+      {
         source: '/wc-api/WC_Gateway_Affirm',
         destination: `${process.env.NEXT_PUBLIC_CMS_URL}wc-api/WC_Gateway_Affirm`,
       },
