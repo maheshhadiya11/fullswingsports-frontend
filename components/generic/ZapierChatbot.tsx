@@ -18,7 +18,7 @@ const ZapierChatbot = () => {
   return (
     <zapier-interfaces-chatbot-embed
       is-popup="true"
-      chatbot-id="cmea3csxw0008ujw9i3m7pgct"
+      chatbot-id="cmioxxl6p008x1si9eqvrabxs"
     />
   );
 };
