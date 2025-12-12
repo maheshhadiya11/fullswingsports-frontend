@@ -291,4 +291,28 @@ module.exports = {
       },
     ]
   },
+
+  async headers() {
+    return [
+      {
+        source: "/sitemap.xml",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: 'https://shop.fullswingsports.com/',
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, OPTIONS",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value: "Content-Type",
+          },
+        ],
+      },
+    ];
+  },
+
+
 }
