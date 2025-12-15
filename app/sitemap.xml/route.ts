@@ -19,7 +19,8 @@ export async function GET() {
       /https?:\/\/shop\.fullswingsports\.com/g,
       'https://fullswingsports.com'
     );
-    
+        console.log('[SITEMAP] Domain replacement done');
+
     return new NextResponse(xml, {
       headers: {
         'Content-Type': 'application/xml; charset=utf-8',
