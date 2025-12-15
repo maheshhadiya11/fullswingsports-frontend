@@ -237,22 +237,22 @@ module.exports = {
   },
   async rewrites() {
     return [
-      // {
-      //   source: '/sitemap.xml',
-      //   destination: `${process.env.NEXT_PUBLIC_CMS_URL}/sitemap_index.xml`,
-      // },
-      // {
-      //   source: '/main-sitemap.xsl',
-      //   destination: `${process.env.NEXT_PUBLIC_CMS_URL}/main-sitemap.xsl`,
-      // },
-      // {
-      //   source: '/:path*-sitemap.xml',
-      //   destination: 'https://shop.fullswingsports.com/:path*-sitemap.xml'
-      // },
-      // {
-      //   source: '/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl',
-      //   destination: `${process.env.NEXT_PUBLIC_CMS_URL}/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl`,
-      // },
+      {
+        source: '/sitemap.xml',
+        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/sitemap_index.xml`,
+      },
+      {
+        source: '/main-sitemap.xsl',
+        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/main-sitemap.xsl`,
+      },
+      {
+        source: '/:path*-sitemap.xml',
+        destination: 'https://shop.fullswingsports.com/:path*-sitemap.xml'
+      },
+      {
+        source: '/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl',
+        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl`,
+      },
       {
         source: '/wc-api/WC_Gateway_Affirm',
         destination: `${process.env.NEXT_PUBLIC_CMS_URL}wc-api/WC_Gateway_Affirm`,
