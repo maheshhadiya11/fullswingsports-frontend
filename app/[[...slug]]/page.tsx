@@ -95,6 +95,10 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
     }
 
   const { seo } = pageData
+  const canonical = seo?.canonical?.replace(
+    'https://shop.fullswingsports.com',
+    'https://fullswingsports.com'
+  )
 
   return {
     title: seo?.title,
@@ -104,7 +108,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
       follow: seo?.metaRobotsNofollow === 'follow',
     },
     alternates: {
-      canonical: seo?.canonical,
+      canonical: canonical,
     },
     keywords: seo?.metaKeywords,
     twitter: {
