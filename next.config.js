@@ -238,60 +238,8 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/sitemap_index.xml`,
-      },
-      {
-        source: '/main-sitemap.xsl',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/main-sitemap.xsl`,
-      },
-      {
-        source: '/:path*-sitemap.xml',
-        destination: 'https://shop.fullswingsports.com/:path*-sitemap.xml'
-      },
-      {
-        source: '/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl`,
-      },
-      {
         source: '/wc-api/WC_Gateway_Affirm',
         destination: `${process.env.NEXT_PUBLIC_CMS_URL}wc-api/WC_Gateway_Affirm`,
-      },
-      {
-        source: '/post-sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/post-sitemap.xml`,
-      },
-      {
-        source: '/page-sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/page-sitemap.xml`,
-      },
-      {
-        source: '/athlete-sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/athlete-sitemap.xml`,
-      },
-      {
-        source: '/bundle-sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/bundle-sitemap.xml`,
-      },
-      {
-        source: '/product-sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/product-sitemap.xml`,
-      },
-      {
-        source: '/category-sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/category-sitemap.xml`,
-      },
-      {
-        source: '/product_cat-sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/product_cat-sitemap.xml`,
-      },
-      {
-        source: '/product_shipping_class-sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/product_shipping_class-sitemap.xml`,
-      },
-      {
-        source: '/author-sitemap.xml',
-        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/author-sitemap.xml`,
       },
     ]
   },
